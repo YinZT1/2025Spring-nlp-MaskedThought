@@ -530,7 +530,7 @@ class Trainer(BaseTrainer):
 
                 if step % args.gradient_accumulation_steps == 0:
                     self.control = self.callback_handler.on_step_begin(args, self.state, self.control)
-
+                # 更新梯度在这里！
                 with self.accelerator.accumulate(model):
                     tr_loss_step = self.training_step(model, inputs)
 

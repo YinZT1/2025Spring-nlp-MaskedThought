@@ -1,0 +1,325 @@
+
+(mask) root@41cf86291b26:/remote-home/yinzhitao/MaskedThought/MaskedThought-main# python evaluation/get_gsm8k_res.py --model out          
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+out
+invalid 0.025018953752843062
+acc 0.32297194844579225
+bleu 0.03000000353657729
+length 52.78392721758908
+
+以下是使用checkpoint 8408时出现的结果：
+
+numpy 降级了
+现在的transformers用的是4.36.1,并不支持vllm，vllm需要4.51.3,之后记得更改回去。
+先尝试能否将两个机器联通
+如果不行，尝试是否可以将LoRA的rank调高。
+
+
+remote-homeyinzhitaoMaskedThoughtMaskedThought-mainmerge3_mft_rank16
+invalid 0.017437452615617893
+acc 0.37604245640636846
+bleu 0.029182618564841254
+length 52.78392721758908
+
+为了修改attention mask的不对齐情况，我修改了modelling_llama中的内容，显式的设置了use_cache = False
+以及past_key_value = None,这一步可以通过查找"额外添加"找到。
+
+我修改了mask_utils里面的get_gpt_masked_input
+
+我修改了config中的baseArgument，添加了DPO的相关内容。
+
+
+sft:
+rank32:
+invalid 0.04473085670962851
+acc 0.2918877937831691
+bleu 0.02826024803176431
+length 52.78392721758908
+
+mft:
+rank16-replace:
+invalid 0.017437452615617893
+acc 0.37604245640636846
+bleu 0.029182618564841254
+length 52.78392721758908
+
+mft_rank128:
+invalid 0.030326004548900682
+acc 0.34268385140257773
+bleu 0.03501102531541941
+length 52.78392721758908
+
+mft_fullSource_rank32:
+invalid 0.01288855193328279
+acc 0.3661865049279757
+bleu 0.03840737816326925
+length 52.78392721758908
+
+mft_mr0.5_rank64:
+invalid 0.02047005307050796
+acc 0.3373768006065201
+bleu 0.03135031027019068
+length 52.78392721758908
+
+mft_rank64_Fullsource_mask_rate_0.3:
+invalid 0.02047005307050796
+acc 0.34950720242608035
+bleu 0.03251645341414804
+length 52.78392721758908
+
+mft_rank64_mr0.5_Noupdate:
+invalid 0.008339651250947688
+acc 0.3457164518574678
+bleu 0.035783740332093666
+length 52.78392721758908
+
+predict_greedy_rootmodels_resmft_lora32_mr0.4_srcNoMask_tgtNoMask
+invalid 0.019711902956785442
+acc 0.3025018953752843
+bleu 0.030658185699030425
+length 52.78392721758908
+
+predict_greedy_rootmodels_resmft_lora32_mr0.4_srcNoMask_tgtMask
+invalid 0.024260803639120546
+acc 0.3388931008339651
+bleu 0.03130266397855198
+length 52.78392721758908
+
+predict_greedy_rootmodels_resmft_lora32_mr0.4_srcMask_tgtNoMask
+invalid 0.016679302501895376
+acc 0.3169067475360121
+bleu 0.02757672669875194
+length 52.78392721758908
+
+predict_greedy_rootmodels_resmft_lora32_mr0.4_srcMask_tgtNoMask
+invalid 0.016679302501895376
+acc 0.3169067475360121
+bleu 0.02757672669875194
+length 52.78392721758908
+
+mft_lora16_mr0.4_updated_srcMask
+invalid 0.019711902956785442
+acc 0.30401819560272936
+bleu 0.03297521630396167
+length 52.78392721758908
+
+mft_lora16_mr0.4_updated_srcNoMask
+invalid 0.015163002274450341
+acc 0.34723275208491283
+bleu 0.032087602872737354
+length 52.78392721758908
+
+mft_lora16_mr0.4_fixed_srcNoMask
+invalid 0.01061410159211524
+acc 0.33965125094768767
+bleu 0.02934918943859415
+length 52.78392721758908
+
+mft_lora16_mr0.4_fixed_srcMask
+invalid 0.015163002274450341
+acc 0.332827899924185
+bleu 0.028669128819404928
+length 52.78392721758908
+
+mft_lora32_mr0.4_srcMask_tgtMask
+invalid 0.016679302501895376
+acc 0.2987111448066717
+bleu 0.030395244289519393
+length 52.78392721758908
+
+mft_lora32_mr0.4_srcNoMask_tgtMask
+invalid 0.024260803639120546
+acc 0.3388931008339651
+bleu 0.03130266397855198
+length 52.78392721758908
+
+mft_lora32_mr0.4_srcMask_tgtNoMask
+invalid 0.016679302501895376
+acc 0.3169067475360121
+bleu 0.02757672669875194
+length 52.78392721758908
+
+mft_lora32_mr0.4_srcNoMask_tgtNoMask
+invalid 0.019711902956785442
+acc 0.3025018953752843
+bleu 0.030658185699030425
+length 52.78392721758908
+
+以下4个dpo对应的epoch为4，warm_up radio 为0.5
+predict_greedy_remote-homeyinzhitaoMaskedThoughtMaskedThought-maindpo_models_resdpo_mft_lora32_mr0.4_srcNoMask_tgtNoMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.15769522365428354
+acc 0.2539802880970432
+bleu 0.02320655300420314
+length 52.78392721758908
+
+predict_greedy_remote-homeyinzhitaoMaskedThoughtMaskedThought-maindpo_models_resdpo_mft_lora32_mr0.4_srcNoMask_tgtMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.08567096285064443
+acc 0.3169067475360121
+bleu 0.03147593661428444
+length 52.78392721758908
+
+predict_greedy_remote-homeyinzhitaoMaskedThoughtMaskedThought-maindpo_models_resdpo_mft_lora32_mr0.4_srcMask_tgtNoMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.08188021228203184
+acc 0.2312357846853677
+bleu 0.023330955334556265
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcMask_tgtMask
+invalid 0.1599696739954511
+acc 0.24791508718726307
+bleu 0.023203838708317333
+length 52.78392721758908
+
+dpo : epoch = 1 , warm up = 0.05
+srcNoMask_tgtNoMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.016679302501895376
+acc 0.3146322971948446
+bleu 0.034391750700436395
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcNoMask_tgtMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.03790750568612585
+acc 0.3457164518574678
+bleu 0.029778719086485363
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcMask_tgtNoMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.03184230477634572
+acc 0.3161485974222896
+bleu 0.03135180289698101
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcMask_tgtMaskfinal_merged_mft_plus_dpo_lora
+invalid 0.02047005307050796
+acc 0.3100833965125095
+bleu 0.03172811690894752
+length 52.78392721758908
+
+(mask) (base) root@41cf86291b26:/remote-home/yinzhitao/MaskedThought/MaskedThought-main# pip show datasets    
+Name: datasets
+Version: 3.6.0
+Summary: HuggingFace community-driven open-source library of datasets
+Home-page: https://github.com/huggingface/datasets
+Author: HuggingFace Inc.
+Author-email: thomas@huggingface.co
+License: Apache 2.0
+Location: /root/miniconda3/envs/mask/lib/python3.10/site-packages
+Requires: dill, filelock, fsspec, huggingface-hub, multiprocess, numpy, packaging, pandas, pyarrow, pyyaml, requests, tqdm, xxhash
+Required-by: trl
+以上是使用trl时候的datasets
+如果要跑脚本，用2.0.0的datasets
+
+注意main_dpo中使用的是新的transformers == 4.51.3
+
+运行evaluation时需要把version变成2.0.0才行
+别的时候，只要和dpo有关，都需要3.6.0
+
+我升级accelerate为0.28.0的版本。
+
+
+
+对于dpo，当epoch设计的比较大时，会出现严重的过拟合，导致测试集上的acc严重降低：
+以下4个dpo对应的epoch为4，warm_up radio 为0.5
+dpo_mft_lora32_mr0.4_srcNoMask_tgtNoMask
+invalid 0.15769522365428354
+acc 0.2539802880970432
+bleu 0.02320655300420314
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcNoMask_tgtMask
+invalid 0.08567096285064443
+acc 0.3169067475360121
+bleu 0.03147593661428444
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcMask_tgtNoMask
+invalid 0.08188021228203184
+acc 0.2312357846853677
+bleu 0.023330955334556265
+length 52.78392721758908
+
+dpo_mft_lora32_mr0.4_srcMask_tgtMask
+invalid 0.1599696739954511
+acc 0.24791508718726307
+bleu 0.023203838708317333
+length 52.78392721758908
+
+对于初始的sft，使用rank32进行训练，自监督得到的结果如下：
+sft:
+rank32:
+invalid 0.04473085670962851
+acc 0.2918877937831691
+bleu 0.02826024803176431
+length 52.78392721758908
+
+对于mft，需要探索lora的rank设计对结果的影响
+同一条件下(mask_rate = 0.4,mask_warmup_rate = 0.66,mask_update=True，不对source掩码，只对CoT掩码)
+rank16:
+acc 0.34723275208491283
+rank32:
+acc 0.3388931008339651
+rank64:
+acc 0.34950720242608035
+rank128:
+acc 0.32268385140257773
+实际上rank16已经足够表现出较为优秀的结果了。并且较高的rank并不会导致准确率增加（这一部分可以进行分析）
+
+掩码方式对结果的影响：
+对CoT中的token随机进行mask掩码：
+rank16:
+acc 0.34723275208491283
+rank32:
+acc 0.3388931008339651
+rank64:
+acc 0.34950720242608035
+
+对所有内容(Source和CoT)都进行掩码：
+rank16:
+acc 0.30401819560272936
+rank32: 
+acc 0.2987111448066717
+
+对CoT中的token进行随机的替换：
+rank16:
+acc 0.33965125094768767
+rank32:
+acc 0.3510235026535254
+
+实际上经过多轮的测试，mask和replace的效果，至少在gsm8k这数据集上，差异并不会很明显。
+
+最好的结果：
+replace = 1:
+rank16:
+acc 0.37604245640636846
+rank32:
+acc 0.3661865049279757
+
+对于lora32的0.4mr的ppo结果是：
+acc 0.3419257012888552
+
+对于lora32的0.4mr的原本mft结果是：
+acc 0.3388931008339651
+
+对于lora32的0.4mr的dpo结果是：
+acc 0.3457164518574678
+
+dpo叠加ppo的结果是：
+acc 0.354814253222138
+
