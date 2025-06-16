@@ -1,0 +1,453 @@
+g
+(mask) root@41cf86291b26:/remote-home/yinzhitao/MaskedThought/MaskedThought-main# : > ppo_log.logpython main_ppo.py
+Loading checkpoint shards:   0%|                                                         | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|████████████████▎                                | 1/3 [00:04<00:09,  4.54s/it]Loading checkpoint shards:  67%|████████████████████████████████▋                | 2/3 [00:08<00:04,  4.37s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [00:11<00:00,  3.69s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [00:11<00:00,  3.89s/it]
+WARNING:root:A <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'> model is loaded from '/remote-home/yinzhitao/MaskedThought/MaskedThought-main/dpo_models_res/dpo_mft_lora32_mr0.4_srcNoMask_tgtMask/final_merged_mft_plus_dpo_lora', and no v_head weight is found. This IS expected if you are not resuming PPO training.
+Loading checkpoint shards:   0%|                                                         | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|████████████████▎                                | 1/3 [00:04<00:08,  4.07s/it]Loading checkpoint shards:  67%|████████████████████████████████▋                | 2/3 [00:08<00:04,  4.15s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [00:11<00:00,  3.55s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [00:11<00:00,  3.70s/it]
+Some weights of LlamaForSequenceClassification were not initialized from the model checkpoint at /remote-home/yinzhitao/MaskedThought/MaskedThought-main/reward_model and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Device set to use cuda:0
+WARNING:accelerate.utils.other:Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+0it [00:00, ?it/s]You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Number of query tensors: 16
+First query tensor shape: torch.Size([104])
+Epoch 0: Generated 16 responses
+Sample query: Jim has a 20 pack of gum.  He chews 1 piece of gum for every 2 hours he's at school over a school da...
+Sample response: 
+Jim chews 1 piece of gum for every 2 hours he's at school, so he chews 2*8= <<2*8=16>>16 pieces of ...
+1it [02:15, 135.93s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py:745: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/torch/utils/checkpoint.py:87: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2it [04:20, 129.36s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([115])
+3it [06:32, 130.35s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+4it [08:36, 128.08s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([127])
+5it [10:42, 127.06s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([105])
+6it [12:58, 130.10s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+7it [15:03, 128.43s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([93])
+8it [17:24, 132.64s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([112])
+9it [19:36, 132.48s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([112])
+10it [21:49, 132.38s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+Epoch 10: Generated 16 responses
+Sample query: A man eats 5 sandwiches per day, his wife eats 4 sandwiches per day, and their son eats 2 sandwiches...
+Sample response: ...
+11it [24:04, 133.18s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+12it [26:08, 130.58s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([111])
+13it [28:21, 131.23s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+14it [30:37, 132.67s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([119])
+15it [32:31, 127.10s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([94])
+16it [34:52, 131.14s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([121])
+17it [36:43, 125.20s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+18it [38:41, 122.96s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+19it [40:46, 123.53s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([106])
+20it [42:48, 123.24s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+Epoch 20: Generated 16 responses
+Sample query: If Martin eats Cheerios every day for breakfast, he'll lose 1.25 pounds/week. If he eats donuts ever...
+Sample response: ...
+21it [44:45, 121.27s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+22it [46:45, 120.90s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([109])
+23it [48:46, 120.92s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([126])
+24it [50:28, 115.36s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([108])
+25it [52:03, 109.33s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([119])
+26it [53:46, 107.26s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+27it [55:56, 114.18s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+28it [57:31, 108.27s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([126])
+29it [59:05, 104.09s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+30it [1:00:36, 100.26s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+Epoch 30: Generated 16 responses
+Sample query: Norman High School enrolls an average of 4000 students every year. Butler High School, the neighbori...
+Sample response: ...
+31it [1:02:15, 99.84s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+32it [1:03:32, 92.96s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([82])
+33it [1:05:27, 99.59s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([86])
+34it [1:07:09, 100.25s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([109])
+35it [1:08:55, 101.92s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+36it [1:10:46, 104.85s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+37it [1:12:02, 96.19s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+38it [1:13:58, 101.99s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([109])
+39it [1:15:20, 96.06s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+40it [1:16:36, 89.89s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([125])
+Epoch 40: Generated 16 responses
+Sample query: John decides to get a loan by mortgaging his home.  His house is worth $250,000.  He gets a loan wor...
+Sample response: ...
+41it [1:17:49, 84.85s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([125])
+42it [1:19:02, 81.28s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+43it [1:20:17, 79.45s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+44it [1:21:48, 82.96s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([78])
+45it [1:23:48, 93.95s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([104])
+46it [1:25:03, 88.40s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([114])
+47it [1:27:12, 100.66s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+48it [1:29:17, 107.86s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+49it [1:31:14, 110.49s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+50it [1:32:43, 104.23s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([117])
+Epoch 50: Generated 16 responses
+Sample query: Joelle has 5 orchids and 4 African daisies on her balcony.  If the orchids have 5 petals and daisies...
+Sample response: ...
+51it [1:34:36, 106.69s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([103])
+52it [1:36:18, 105.50s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+53it [1:37:45, 99.68s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+54it [1:38:58, 91.69s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([121])
+55it [1:40:13, 86.90s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([108])
+56it [1:41:49, 89.49s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+57it [1:43:37, 95.12s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+58it [1:45:22, 98.16s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+59it [1:46:56, 96.66s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([98])
+60it [1:48:43, 99.84s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([124])
+Epoch 60: Generated 16 responses
+Sample query: Jerry is rolling a six-sided die. How much more likely is it (expressed as a percentage) that he rol...
+Sample response: ...
+61it [1:49:38, 86.43s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([113])
+62it [1:51:14, 89.33s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([98])
+63it [1:52:56, 92.99s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+64it [1:54:12, 88.04s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+65it [1:55:45, 89.39s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([81])
+66it [1:58:03, 104.17s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+67it [1:59:39, 101.68s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([110])
+68it [2:00:57, 94.48s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+69it [2:02:20, 90.95s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+70it [2:03:45, 89.25s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([96])
+Epoch 70: Generated 16 responses
+Sample query: Liam and Mitchell own competing lemonade stands across the street from one another. When Liam bragge...
+Sample response: ...
+71it [2:06:04, 104.20s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([111])
+72it [2:07:38, 101.19s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+73it [2:09:10, 98.42s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([114])
+74it [2:11:04, 103.19s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+75it [2:12:32, 98.42s/it] Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+76it [2:14:20, 101.55s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([122])
+77it [2:16:03, 101.96s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([88])
+78it [2:18:27, 114.36s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([79])
+79it [2:20:54, 124.22s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+80it [2:22:41, 118.99s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+Epoch 80: Generated 16 responses
+Sample query: Two track teams are competing against each other in a 4 by 400 meter relay; a race where each compet...
+Sample response: this information, how long will it take for the second team to finish the race?
+I start by figuring ...
+81it [2:24:29, 115.66s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([108])
+82it [2:25:55, 106.97s/it]82it [2:25:55, 106.78s/it]
+(mask) root@41cf86291b26:/remote-home/yinzhitao/MaskedThought/MaskedThought-main# [K(mask) root@41cf86291b26:/remote-home/yinzhitao/MaskedThought/MaskedThought-main# python main_ppo.py
+Using custom data configuration default-ae240ce84918d55c
+Downloading and preparing dataset json/default to /root/.cache/huggingface/datasets/json/default-ae240ce84918d55c/0.0.0/ac0ca5f5289a6cf108e706efcf040422dbbfa8e658dee6a819f20d76bb84d26b...
+Downloading data files:   0%|                                                            | 0/1 [00:00<?, ?it/s]Downloading data files: 100%|██████████████████████████████████████████████████| 1/1 [00:00<00:00, 8208.03it/s]
+Extracting data files:   0%|                                                             | 0/1 [00:00<?, ?it/s]Extracting data files: 100%|███████████████████████████████████████████████████| 1/1 [00:00<00:00, 1678.39it/s]
+Dataset json downloaded and prepared to /root/.cache/huggingface/datasets/json/default-ae240ce84918d55c/0.0.0/ac0ca5f5289a6cf108e706efcf040422dbbfa8e658dee6a819f20d76bb84d26b. Subsequent calls will reuse this data.
+Parameter 'function'=<function flatten_query at 0x7f537afb0700> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+  0%|                                                                                 | 0/1319 [00:00<?, ?ex/s] 88%|██████████████████████████████████████████████████████████▊        | 1159/1319 [00:00<00:00, 11588.24ex/s]100%|███████████████████████████████████████████████████████████████████| 1319/1319 [00:00<00:00, 11765.09ex/s]
+Loading checkpoint shards:   0%|                                                         | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|████████████████▎                                | 1/3 [01:13<02:26, 73.48s/it]Loading checkpoint shards:  67%|████████████████████████████████▋                | 2/3 [01:37<00:44, 44.45s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [01:54<00:00, 31.99s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [01:54<00:00, 38.26s/it]
+WARNING:root:A <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'> model is loaded from '/root/models_res/mft_lora32_mr0.4_srcNoMask_tgtMask', and no v_head weight is found. This IS expected if you are not resuming PPO training.
+Loading checkpoint shards:   0%|                                                         | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|████████████████▎                                | 1/3 [00:04<00:08,  4.10s/it]Loading checkpoint shards:  67%|████████████████████████████████▋                | 2/3 [00:08<00:04,  4.17s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [00:11<00:00,  3.56s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 3/3 [00:11<00:00,  3.71s/it]
+Some weights of LlamaForSequenceClassification were not initialized from the model checkpoint at /remote-home/yinzhitao/MaskedThought/MaskedThought-main/reward_model and are newly initialized: ['score.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Device set to use cuda:0
+  0%|                                                                                 | 0/1319 [00:00<?, ?ex/s] 29%|████████████████████▎                                                | 389/1319 [00:00<00:00, 3883.00ex/s] 60%|█████████████████████████████████████████▎                           | 789/1319 [00:00<00:00, 3949.79ex/s] 90%|█████████████████████████████████████████████████████████████       | 1184/1319 [00:00<00:00, 3779.92ex/s]100%|████████████████████████████████████████████████████████████████████| 1319/1319 [00:00<00:00, 3838.80ex/s]
+WARNING:accelerate.utils.other:Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+0it [00:00, ?it/s]You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Number of query tensors: 16
+First query tensor shape: torch.Size([104])
+Epoch 0: Generated 16 responses
+Sample query: Jim has a 20 pack of gum.  He chews 1 piece of gum for every 2 hours he's at school over a school da...
+Sample response: 
+Jim chews 1 piece of gum for every 2 hours he's at school, so he chews 2*8= <<2*8=16>>16 pieces of ...
+1it [02:15, 135.99s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py:745: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/torch/utils/checkpoint.py:87: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2it [04:20, 129.43s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([115])
+3it [06:32, 130.41s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.01 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+4it [08:37, 128.16s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([127])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.59 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+5it [10:42, 127.15s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([105])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.73 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+6it [12:58, 130.16s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.41 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+7it [15:03, 128.44s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([93])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.64 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+8it [17:24, 132.39s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([112])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.31 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+9it [19:36, 132.35s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([112])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.33 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+10it [21:48, 132.33s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.14 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+Epoch 10: Generated 16 responses
+Sample query: A man eats 5 sandwiches per day, his wife eats 4 sandwiches per day, and their son eats 2 sandwiches...
+Sample response: ...
+11it [24:00, 132.20s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.00 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+12it [26:05, 129.95s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([111])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.10 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+13it [28:18, 130.81s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.27 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+14it [30:33, 132.09s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([119])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.09 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+15it [32:42, 131.22s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([94])
+16it [35:02, 134.00s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([121])
+17it [37:11, 132.27s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+18it [39:26, 133.07s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+19it [41:31, 130.60s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([106])
+/root/miniconda3/envs/mask/lib/python3.10/site-packages/trl/trainer/ppo_trainer.py:1279: UserWarning: KL divergence is starting to become negative: -1.13 - this might be a precursor for failed training. sometimes this happens because the generation kwargs are not correctly set. Please make sure that the generation kwargs are set correctly, or review your training hyperparameters.
+  warnings.warn(
+20it [43:44, 131.52s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+Epoch 20: Generated 16 responses
+Sample query: If Martin eats Cheerios every day for breakfast, he'll lose 1.25 pounds/week. If he eats donuts ever...
+Sample response: ...
+21it [45:49, 129.49s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+22it [48:07, 132.08s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([109])
+23it [50:21, 132.63s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([126])
+24it [52:27, 130.62s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([108])
+25it [54:41, 131.77s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([119])
+26it [56:48, 130.18s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+27it [59:06, 132.59s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+28it [1:01:11, 130.25s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([126])
+29it [1:03:17, 128.95s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+30it [1:05:22, 127.71s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+Epoch 30: Generated 16 responses
+Sample query: Norman High School enrolls an average of 4000 students every year. Butler High School, the neighbori...
+Sample response: ...
+31it [1:07:26, 126.83s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+32it [1:09:31, 126.20s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([82])
+33it [1:11:58, 132.30s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([86])
+34it [1:14:22, 135.93s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([109])
+35it [1:16:36, 135.33s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+36it [1:18:41, 132.23s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+37it [1:20:46, 129.98s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([107])
+38it [1:23:01, 131.50s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([109])
+39it [1:25:15, 132.26s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+40it [1:27:19, 129.99s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([125])
+Epoch 40: Generated 16 responses
+Sample query: John decides to get a loan by mortgaging his home.  His house is worth $250,000.  He gets a loan wor...
+Sample response: ...
+41it [1:29:26, 128.93s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([125])
+42it [1:31:32, 128.20s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+43it [1:33:37, 127.17s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+44it [1:35:42, 126.43s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([78])
+45it [1:38:10, 132.88s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([104])
+46it [1:40:26, 133.95s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([114])
+47it [1:42:31, 131.08s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+48it [1:44:35, 129.18s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+49it [1:46:53, 131.87s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+50it [1:48:58, 129.71s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([117])
+Epoch 50: Generated 16 responses
+Sample query: Joelle has 5 orchids and 4 African daisies on her balcony.  If the orchids have 5 petals and daisies...
+Sample response: ...
+51it [1:51:09, 129.91s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([103])
+52it [1:53:26, 132.05s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([101])
+53it [1:55:44, 133.87s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+54it [1:57:48, 131.10s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([121])
+55it [1:59:57, 130.24s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([108])
+56it [2:02:11, 131.50s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+57it [2:04:16, 129.46s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+58it [2:06:21, 128.07s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+59it [2:08:25, 127.11s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([98])
+60it [2:10:45, 130.94s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([124])
+Epoch 60: Generated 16 responses
+Sample query: Jerry is rolling a six-sided die. How much more likely is it (expressed as a percentage) that he rol...
+Sample response: ...
+61it [2:12:52, 129.67s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([113])
+62it [2:15:05, 130.55s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([98])
+63it [2:17:24, 133.32s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+64it [2:19:29, 130.73s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+65it [2:21:34, 128.90s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([81])
+66it [2:24:01, 134.36s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+67it [2:26:05, 131.46s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([110])
+68it [2:28:17, 131.40s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+69it [2:30:21, 129.38s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+70it [2:32:26, 127.97s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([96])
+Epoch 70: Generated 16 responses
+Sample query: Liam and Mitchell own competing lemonade stands across the street from one another. When Liam bragge...
+Sample response: ...
+71it [2:34:45, 131.32s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([111])
+72it [2:36:56, 131.20s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+73it [2:39:01, 129.26s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([114])
+74it [2:41:13, 130.05s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+75it [2:43:17, 128.43s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+76it [2:45:22, 127.33s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([122])
+77it [2:47:30, 127.45s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([88])
+78it [2:49:53, 132.22s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([79])
+79it [2:52:21, 136.75s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+80it [2:54:25, 133.16s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([128])
+Epoch 80: Generated 16 responses
+Sample query: Two track teams are competing against each other in a 4 by 400 meter relay; a race where each compet...
+Sample response: the equation for the average speed of a team, find the total time and the total distance the two tea...
+81it [2:56:30, 130.65s/it]Number of query tensors: 16
+First query tensor shape: torch.Size([108])
+82it [2:58:43, 131.19s/it]82it [2:58:43, 130.77s/it]
+(mask) root@41cf86291b26:/remote-home/yinzhitao/MaskedThought/MaskedThought-main# 
